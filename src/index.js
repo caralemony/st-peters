@@ -2,7 +2,6 @@ exports.get = (req, res) => {
   res.render('home');
 };
 
-
 const app = require('./app.js');
 
 app.listen(app.get('port'), () => {
