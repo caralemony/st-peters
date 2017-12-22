@@ -1,3 +1,1 @@
-const printUrl = require('../src/apiCalls');
-
-var results = document.getElementById('results');
+// var results = document.getElementById('results');

@@ -11,12 +11,15 @@
         <h3>Pick a topic below<h3>
 
     <section class="seach_container">
-      <input type="text" placeholder="Donald Trump, pugs, avocados..." required>
-      <input type="submit" value="Search">
+      <form action="/newsCall" method="GET">
+      <input type="text" placeholder="Donald Trump, pugs, avocados..." name="queryTopic" required>
+      <input type="submit" id="submit" value="Search">
+    </form>
     </section>
 
-    <section class="results">
+    <section class="results" id="results">
     </section>
-
+    <script src="./index.js"></script>
   </body>
+
 </html>

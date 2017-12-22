@@ -7,7 +7,7 @@ const NEWS_API = process.env.NEWS_API;
 const WATSON_USER = process.env.WATSON_USER.toString();
 const WATSON_PASSWORD = process.env.WATSON_PASSWORD.toString();
 
-var nlu = new NaturalLanguageUnderstandingV1({
+const nlu = new NaturalLanguageUnderstandingV1({
   username: WATSON_USER,
   password: WATSON_PASSWORD,
   version_date: NaturalLanguageUnderstandingV1.VERSION_DATE_2017_02_27
@@ -29,7 +29,7 @@ let parameters = {
   }
 }
 
-const newsAPI = (searchTerm, cb) => {
+const newsAPI = (searchTerm) => {
 const xhr = new XMLHttpRequest();
 const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail&apiKey=${NEWS_API}`;
 

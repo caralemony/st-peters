@@ -5,23 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "nodemon public/index.js",
+    "nodemon": "nodemon ./src/index.js",
     "start": "index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caralemony/st-peters.git"
+    "url": "git+https://github.com/caralemony/what-is-it-watson.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caralemony/st-peters/issues"
+    "url": "https://github.com/caralemony/what-is-it-watson/issues"
   },
-  "homepage": "https://github.com/caralemony/st-peters#readme",
+  "homepage": "https://github.com/caralemony/what-is-it-watson#readme",
   "devDependencies": {
     "nodemon": "^1.13.3"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "env": "0.0.2",
+    "env2": "^2.2.0",
+    "express": "^4.16.2",
+    "watson-developer-cloud": "^3.0.3",
+    "xmlhttprequest": "^1.8.0"
   }
 }
