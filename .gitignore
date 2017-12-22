@@ -55,7 +55,4 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-
-# API Key
-./src/config.js
+*.env
