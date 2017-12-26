@@ -6,7 +6,7 @@ const NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-l
 const NEWS_API = process.env.NEWS_API;
 const WATSON_USER = process.env.WATSON_USER.toString();
 const WATSON_PASSWORD = process.env.WATSON_PASSWORD.toString();
-
+const printResponse = require('../public/index.js');
 const nlu = new NaturalLanguageUnderstandingV1({
   username: WATSON_USER,
   password: WATSON_PASSWORD,
@@ -34,7 +34,7 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail
       if (err)
         console.log('error:', err);
       else
-        processData(JSON.stringify(response.emotion.document.emotion, null, 2));
+        processAPIResponse(response.emotion.document.emotion);
     });
     }
   };
@@ -42,11 +42,9 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail
   xhr.send();
 };
 
-
-const processData = (data) => {
+const processAPIResponse = (data) => {
 let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });
-let a = Object.keys(data);
-console.log(a);
+printResponse(keyEmotion);
 }
 
 
