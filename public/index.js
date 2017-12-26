@@ -1,1 +1,3 @@
-// var results = document.getElementById('results');
+
+
+var results = document.getElementById('results');

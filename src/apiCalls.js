@@ -16,15 +16,7 @@ const nlu = new NaturalLanguageUnderstandingV1({
 let parameters = {
   'url': '',
   'features': {
-    'entities': {
-      'emotion': true,
-      'sentiment': true,
-      'limit': 2
-    },
-    'keywords': {
-      'emotion': true,
-      'sentiment': true,
-      'limit': 2
+    'emotion': {
     }
   }
 }
@@ -37,17 +29,25 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail
     if (this.readyState == 4 && this.status == 200) {
     const bodyRes = JSON.parse(this.responseText);
     parameters.url = bodyRes.articles[0].url;
-    console.log(parameters.url);
+
     nlu.analyze(parameters, function(err, response) {
       if (err)
         console.log('error:', err);
       else
-        console.log(JSON.stringify(response, null, 2));
+        processData(JSON.stringify(response.emotion.document.emotion, null, 2));
     });
     }
   };
   xhr.open("GET", url, true);
   xhr.send();
 };
+
+
+const processData = (data) => {
+let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });
+let a = Object.keys(data);
+console.log(a);
+}
+
 
 module.exports = newsAPI;
