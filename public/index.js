@@ -1,7 +1,9 @@
 var results = document.getElementById('results');
 
-const printResponse = (emotion) => {
-  results.innerText = emotion;
-};
+results.innerText = 'things';
 
-module.exports = printResponse;
+// const printResponse = (emotion) => {
+//   results.innerText = emotion;
+// };
+//
+// module.exports = printResponse;
