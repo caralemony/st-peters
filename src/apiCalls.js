@@ -21,15 +21,15 @@ let parameters = {
   }
 }
 
-const newsAPI = (searchTerm, source) => {
+const newsAPI = (searchTerm, source, results) => {
 const xhr = new XMLHttpRequest();
 const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
 
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     const bodyRes = JSON.parse(this.responseText);
-    parameters.url = bodyRes.articles[0].url;
-    console.log(parameters.url);
+    parameters.url = bodyRes.articles[0].url
+    // ADD ERROR HANDLING FOR IF NO RESULTS
 
     nlu.analyze(parameters, function(err, response) {
       if (err)
@@ -45,7 +45,7 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&
 
 const processAPIResponse = (data) => {
 let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });
-console.log(data, keyEmotion);
+newsApi(null, null, keyEmotion);
 }
 
 
