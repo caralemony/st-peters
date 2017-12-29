@@ -1,7 +1,6 @@
-const path = require('path');
+const request = require('request');
 require('env2')('./config.env');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const fs = require('fs');
 const NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 const NEWS_API = process.env.NEWS_API;
 const WATSON_USER = process.env.WATSON_USER.toString();
@@ -20,29 +19,30 @@ let parameters = {
     }
   }
 }
-
 const newsAPI = (searchTerm, source) => {
-const xhr = new XMLHttpRequest();
 const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
 
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-    const bodyRes = JSON.parse(this.responseText);
-    console.log(bodyRes);
-    parameters.url = bodyRes.articles[0].url
-    // ADD ERROR HANDLING FOR IF NO RESULTS
-
-    nlu.analyze(parameters, function(err, response) {
-      if (err)
-        console.log('error:', err);
-      else
-        processAPIResponse(response.emotion.document.emotion);
-    });
-    }
-  };
-  xhr.open("GET", url, true);
-  xhr.send();
+request(url, function (error, response, body) {
+  if (error) {
+  console.log('error:', error);
+} else if (response.statusCode == 200) {
+  let results = JSON.parse(body);
+  parameters.url = results.articles[0].url
+  console.log(parameters.url);
+      nlu.analyze(parameters, function(err, response) {
+        if (err)
+          console.log('error:', err);
+        else
+          processAPIResponse(response.emotion.document.emotion);
+      });
+} else {
+  console.log('uh oh');
+}
+});
 };
+
+
+
 
 const processAPIResponse = (data) => {
 let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });

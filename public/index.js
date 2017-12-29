@@ -10,21 +10,22 @@ form.addEventListener("submit", function APICall(searchTerm, source) {
     // } else {
     var searchTerm = search.value;
         var url = "/newsCall?" + searchTerm + "&" + op.options[op.selectedIndex].value;
-        console.log('search=', searchTerm, 'url=', url);
+          console.log(url);
       XHRrequest(url, updateDom);
-      });
+    });
 
 
-function updateDom(err, data) {
-  console.log('here');
+function updateDom(data) {
+  results.innerText = data;
 }
 
 function XHRrequest(url, cb) {
   var xhr = new XMLHttpRequest();
+  console.log(url);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                cb(null, 'SOMETHING');
+                cb(null, data);
             } else {
                 var errorMessage = 'KLJNEFKJ';
                 cb("Error " + url + " " + errorMessage);
