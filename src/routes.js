@@ -10,9 +10,8 @@ router.get('/newsCall?', (req, res) => {
   let queries = queryString.parse(req.url);
   let searchTerm = queries[Object.keys(queries)[0]];
   let source = queries[Object.keys(queries)[1]];
-  newsAPI(searchTerm, source, results);
+  newsAPI(searchTerm, source);
   res.redirect('/');
-  console.log(results);
 })
 
 module.exports = router;

@@ -21,7 +21,7 @@ let parameters = {
   }
 }
 
-const newsAPI = (searchTerm, source, results) => {
+const newsAPI = (searchTerm, source) => {
 const xhr = new XMLHttpRequest();
 const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
 
@@ -45,8 +45,9 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&
 
 const processAPIResponse = (data) => {
 let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });
-newsApi(null, null, keyEmotion);
+console.log(keyEmotion);
 }
+
 
 
 module.exports = newsAPI;
