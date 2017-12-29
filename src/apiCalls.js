@@ -21,20 +21,21 @@ let parameters = {
   }
 }
 
-const newsAPI = (searchTerm) => {
+const newsAPI = (searchTerm, source) => {
 const xhr = new XMLHttpRequest();
-const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail&apiKey=${NEWS_API}`;
+const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
 
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     const bodyRes = JSON.parse(this.responseText);
-    parameters.url = bodyRes.articles[0].url;
+    parameters.url = bodyRes.articles[0].url
+    // ADD ERROR HANDLING FOR IF NO RESULTS
 
     nlu.analyze(parameters, function(err, response) {
       if (err)
         console.log('error:', err);
       else
-        processData(JSON.stringify(response.emotion.document.emotion, null, 2));
+        processAPIResponse(response.emotion.document.emotion);
     });
     }
   };
@@ -42,12 +43,11 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=daily-mail
   xhr.send();
 };
 
-
-const processData = (data) => {
+const processAPIResponse = (data) => {
 let keyEmotion = Object.keys(data).reduce(function(a, b){ return data[a] > data[b] ? a : b });
-let a = Object.keys(data);
-console.log(a);
+console.log(keyEmotion);
 }
+
 
 
 module.exports = newsAPI;
