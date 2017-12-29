@@ -5,13 +5,10 @@ var search = document.getElementById("searchTerm");
 var op = document.getElementById("options");
 
 form.addEventListener("submit", function APICall(searchTerm, source) {
-    // if (err) {
-    //     console.log(err)
-    // } else {
     var searchTerm = search.value;
-        var url = "/newsCall?" + searchTerm + "&" + op.options[op.selectedIndex].value;
-          console.log(url);
-      XHRrequest(url, updateDom);
+    var url = "/newsCall?" + searchTerm + "&" + op.options[op.selectedIndex].value;
+    XHRrequest(url, updateDom);
+    console.log(url);
     });
 
 
@@ -21,17 +18,19 @@ function updateDom(data) {
 
 function XHRrequest(url, cb) {
   var xhr = new XMLHttpRequest();
-  console.log(url);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                cb(null, data);
+              var responseObj = JSON.parse(xhr.responseText);
+              console.log('obj', responseObj);
+              cb(responseObj);
             } else {
                 var errorMessage = 'KLJNEFKJ';
                 cb("Error " + url + " " + errorMessage);
             }
         }
     };
+    console.log(url);
     xhr.open("GET", url, true);
     xhr.send();
 }
