@@ -28,6 +28,7 @@ const url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     const bodyRes = JSON.parse(this.responseText);
+    console.log(bodyRes);
     parameters.url = bodyRes.articles[0].url
     // ADD ERROR HANDLING FOR IF NO RESULTS
 

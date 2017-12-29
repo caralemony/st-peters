@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const home = require('./index.js');
 const newsAPI = require('./apiCalls.js');
-const queryString = require('query-string');
 
 router.get('/', home.get);
 
 router.get('/newsCall?', (req, res) => {
-  let queries = queryString.parse(req.url);
-  let searchTerm = queries[Object.keys(queries)[0]];
-  let source = queries[Object.keys(queries)[1]];
+  console.log(req.url);
+  let searchTerm = req.url.split('?')[1].split('&')[0];
+  let source = req.url.split('&')[1];
+  console.log(searchTerm, source);
   newsAPI(searchTerm, source);
   res.redirect('/');
 })
