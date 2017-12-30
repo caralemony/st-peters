@@ -20,32 +20,34 @@ let parameters = {
     }
   }
 }
-const newsAPI = (req, res, cb) => {
+const newsAPI = (req, res) => {
   let searchTerm = req.url.split('?')[1].split('&')[0];
   let source = req.url.split('&')[1];
-  let url =`https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
-console.log(url);
+  let url = `https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
+  console.log(url);
 
-request(url, function (error, response, body) {
-  if (error) {
-  console.log('error:', error);
-} else if (response.statusCode == 200) {
-  let results = JSON.parse(body);
-  parameters.url = results.articles[0].url
-      nlu.analyze(parameters, function(err, response) {
-        if (err)
-          console.log('error:', err);
-        else {
-          let results = response.emotion.document.emotion;
-          let emotion = Object.keys(results).reduce(function(a, b){ return results[a] > results[b] ? a : b });
-          cb(emotion);
+  request(url, (error, response, body) => {
+    if (error) {
+      console.log('error:', error);
+
+    } else if (response.statusCode == 200) {
+      let results = JSON.parse(body);
+      parameters.url = results.articles[0].url
+
+      // nlu.analyze(parameters, function(err, response) {
+      //   if (err)
+      //     console.log('error:', err);
+      //   else {
+      //     let results = response.emotion.document.emotion;
+      //     let emotion = Object.keys(results).reduce(function(a, b) {
+      //       return results[a] > results[b] ? a : b
+      //     });
+          response.end(parameters.url);
         }
-});
-} else {
-  console.log('uh oh');
-}
-});
-};
+      });
+    };
+
+
 
 
 

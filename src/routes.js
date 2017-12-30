@@ -7,8 +7,8 @@ const updateDom = require('../src/index.js')
 router.get('/', home.get);
 
 router.get('/newsCall?', (req, res) => {
-  newsAPI(req, res, updateDom);
-  res.send(res);
+  newsAPI(req, res);
+  res.redirect('/');
 
 })
 

@@ -7,8 +7,8 @@ var op = document.getElementById("options");
 form.addEventListener("submit", function APICall(searchTerm, source) {
     var searchTerm = search.value;
     var url = "/newsCall?" + searchTerm + "&" + op.options[op.selectedIndex].value;
-    XHRrequest(url, updateDom);
     console.log(url);
+    XHRrequest(url, updateDom);
     });
 
 
@@ -17,12 +17,12 @@ function updateDom(data) {
 }
 
 function XHRrequest(url, cb) {
+  console.log('req', url);
   var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               var responseObj = JSON.parse(xhr.responseText);
-              console.log('obj', responseObj);
               cb(responseObj);
             } else {
                 var errorMessage = 'KLJNEFKJ';
@@ -30,7 +30,6 @@ function XHRrequest(url, cb) {
             }
         }
     };
-    console.log(url);
     xhr.open("GET", url, true);
     xhr.send();
 }
