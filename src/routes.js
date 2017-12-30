@@ -8,7 +8,6 @@ router.get('/', home.get);
 
 router.get('/newsCall?', (req, res) => {
   newsAPI(req, res);
-  res.redirect('/');
 
 })
 
