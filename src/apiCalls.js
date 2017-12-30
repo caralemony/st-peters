@@ -21,40 +21,33 @@ let parameters = {
   }
 }
 
-
-
 const newsAPI = (request, response) => {
   let searchTerm = request.url.split('?')[1].split('&')[0];
   let source = request.url.split('&')[1];
   let url = `https://newsapi.org/v2/everything?q=${searchTerm}&sources=${source}&apiKey=${NEWS_API}`;
-  console.log(url);
 
-
-
-  APIrequest(url, (error, res, body) => {
-    let emotions = [];
+APIrequest(url, (error, res, body) => {
     if (error) {
       console.log('error:', error);
-
     } else {
       let results = JSON.parse(body);
       parameters.url = results.articles[0].url;
-      nlu.analyze(parameters, function(err, response) {
+      let emotions = nlu.analyze(parameters, function(err, response) {
         if (err)
           console.log('error:', err);
         else {
-        let emotions = response.emotion.document.emotion;
-          // let emotion = Object.keys(results).reduce(function(a, b) {
-          //   return results[a] > results[b] ? a : b
-          // });
+        return response.emotion.document.emotion;
+        console.log(response.emotion.document.emotion);
         }
       });
-        response.end(JSON.stringify(parameters.url));
+        response.end(JSON.stringify(emotions));
     }
   });
 };
 
-
+// let emotion = Object.keys(results).reduce(function(a, b) {
+//   return results[a] > results[b] ? a : b
+// });
 
 
 
