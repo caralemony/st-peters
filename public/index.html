@@ -9,11 +9,10 @@
     <h1>Not Sure What to Think?<h1>
       <h2>Let us do it for you!<h2>
         <h3>Pick a topic below<h3>
-
-    <section class="seach_container">
-      <form action="/newsCall" method="GET" id="form">
-      <input type="text" placeholder="Donald Trump, pugs, avocados..." name="queryTopic" required>
-      <select name="options" form="form">
+    <section class="search_container">
+      <form id="form">
+      <input type="text" placeholder="Donald Trump, pugs, avocados..." id="searchTerm" required>
+      <select name="options" id="options" form="form">
         <option value="daily-mail">Daily Mail</option>
         <option value="the-guardian-uk">Guardian</option>
         <option value="reddit-r-all">Reddit</option>
@@ -22,10 +21,10 @@
       <input type="submit" id="submit" value="Search">
     </form>
     </section>
-
-    <section class="results" id="results">
+    <section class="results">
+      <div id="results"></div>
     </section>
-    <script src="index.js">
+    <script src="./index.js">
   </script>
   </body>
 
