@@ -15,7 +15,10 @@ form.addEventListener("submit", function(event) {
 
 
 function updateDom(data) {
-  emotion = data;
+  data = JSON.parse(data);
+  emotion = Object.keys(data).reduce(function(a, b) {
+    return data[a] > data[b] ? a : b
+  });
   results.innerText = emotion;
 }
 
