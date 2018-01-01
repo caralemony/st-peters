@@ -4,8 +4,6 @@ var form = document.getElementById("form");
 var search = document.getElementById("searchTerm");
 var op = document.getElementById("options");
 
-var emotion = "";
-
 form.addEventListener("submit", function(event) {
   event.preventDefault();
     var searchTerm = search.value;
@@ -16,7 +14,7 @@ form.addEventListener("submit", function(event) {
 
 function updateDom(data) {
   data = JSON.parse(data);
-  emotion = Object.keys(data).reduce(function(a, b) {
+  var emotion = Object.keys(data).reduce(function(a, b) {
     return data[a] > data[b] ? a : b
   });
   results.innerText = emotion;

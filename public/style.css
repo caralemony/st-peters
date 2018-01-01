@@ -1,0 +1,29 @@
+body {
+  background: linear-gradient(135deg, rgba(39,83,150,1) 0%, rgba(38,79,141,1) 19%, rgba(33,66,114,1) 81%, rgba(32,62,105,1) 100%);
+  background-repeat: no repeat;
+  background-position: fixed;
+  height: 100vh;
+}
+
+.titles {
+flex-direction: column;
+text-align: center;
+font-family: 'Oswald', sans-serif;
+
+}
+
+h1 {
+font-size: 3em;
+}
+
+.search_container {
+text-align: center;
+}
+
+.options, .search_btn {
+font-size: 1em;
+}
+
+#searchTerm {
+width: 30%;
+}

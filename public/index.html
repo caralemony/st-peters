@@ -3,22 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta lang="en">
-    <title>Media Aggregator</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Media Roundup</title>
   </head>
   <body>
-    <h1>Not Sure What to Think?<h1>
-      <h2>Let us do it for you!<h2>
-        <h3>Pick a topic below<h3>
+    <section class="titles">
+    <h1>Media Roundup<h1>
+      <h2>Not Sure What to Think? Let us do it for you!<h2>
+        <h3>Pick a topic and news source below and we will tell you how to feel about it!<h3>
+        </section>
     <section class="search_container">
       <form id="form">
-      <input type="text" placeholder="Donald Trump, pugs, avocados..." id="searchTerm" required>
-      <select name="options" id="options" form="form">
-        <option value="daily-mail">Daily Mail</option>
-        <option value="the-guardian-uk">Guardian</option>
+      <input type="text" class="options" placeholder="Donald Trump, pugs, avocados..." id="searchTerm" required>
+      <select name="options" class="options" id="options" form="form">
+        <option value="daily-mail">The Daily Mail</option>
+        <option value="the-guardian-uk">The Guardian</option>
         <option value="reddit-r-all">Reddit</option>
         <option value="buzzfeed">BuzzFeed</option>
       </select>
-      <input type="submit" id="submit" value="Search">
+      <input type="submit" class="search_btn" id="submit" value="Search">
     </form>
     </section>
     <section class="results">
