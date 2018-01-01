@@ -1,0 +1,69 @@
+body {
+  background: linear-gradient(135deg, rgba(39,83,150,1) 0%, rgba(38,79,141,1) 19%, rgba(33,66,114,1) 81%, rgba(32,62,105,1) 100%);
+  background-repeat: no repeat;
+  background-position: fixed;
+  height: 100vh;
+}
+
+.titles, .results {
+flex-direction: column;
+text-align: center;
+font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+font-family: 'Lobster', cursive !important;
+font-size: 5em;
+color: rgb(249, 249, 249);
+text-shadow: 1px 0px 0px black;
+}
+
+.search_container {
+text-align: center;
+}
+
+.options, .search_btn {
+font-size: 1em;
+border-radius: 0px;
+}
+
+#searchTerm {
+width: 30%;
+}
+
+.results {
+  font-size: 2em;
+}
+
+
+.loader {
+    position: fixed;
+    left: 45%;
+    top: 45%;
+    margin: 0px auto;
+    border: 10px solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    border-top: 10px solid white;
+    background: rgba(0, 0, 0, 0);
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+    }
+    @-webkit-keyframes spin {
+    0% {
+    -webkit-transform: rotate(0deg);
+    }
+    100% {
+    -webkit-transform: rotate(360deg);
+    }
+    }
+    @keyframes spin {
+    0% {
+    transform: rotate(0deg);
+    }
+    100% {
+    transform: rotate(360deg);
+    }
+    }
