@@ -5,15 +5,17 @@ body {
   height: 100vh;
 }
 
-.titles {
+.titles, .results {
 flex-direction: column;
 text-align: center;
 font-family: 'Oswald', sans-serif;
-
 }
 
 h1 {
-font-size: 3em;
+font-family: 'Lobster', cursive !important;
+font-size: 5em;
+color: rgb(249, 249, 249);
+text-shadow: 1px 0px 0px black;
 }
 
 .search_container {
@@ -22,8 +24,13 @@ text-align: center;
 
 .options, .search_btn {
 font-size: 1em;
+border-radius: 0px;
 }
 
 #searchTerm {
 width: 30%;
+}
+
+.results {
+  font-size: 2em;
 }
