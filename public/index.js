@@ -3,11 +3,13 @@ var btn = document.getElementById("submit");
 var form = document.getElementById("form");
 var search = document.getElementById("searchTerm");
 var op = document.getElementById("options");
+var spinner = document.getElementById("spinner");
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
     var searchTerm = search.value;
     var url = "/newsCall?" + searchTerm + "&" + op.options[op.selectedIndex].value;
+    spinner.className = "loader";
     XHRrequest(url, updateDom);
     });
 
@@ -17,6 +19,7 @@ function updateDom(data) {
   var emotion = Object.keys(data).reduce(function(a, b) {
     return data[a] > data[b] ? a : b
   });
+  spinner.className = "hidden";
   results.innerText = emotion;
 }
 
