@@ -7,7 +7,7 @@ APIs used - IBM's Watson and News
 
 ### Why?
 
-Recently, it came to my attention that one could play around with IBM's Watson, an Artificial Intelligence platform, which is think is pretty neat :sunglasses: 
+Recently, it came to my attention that one could play around with IBM's Watson, an Artificial Intelligence platform, which I think is pretty neat :sunglasses: 
 
 ### How?
 
